@@ -24,13 +24,22 @@ namespace PupperMvc.Controllers
     public IActionResult Details(int id)
     {
       var doggo = Doggo.GetDetails(id);
-      return View(doggo);
+      return View("Details", doggo);
     }
 
-    // public IActionResult Edit(int id)
-    // {
+    public IActionResult Edit(int id)
+    {
+      var doggo = Doggo.GetDetails(id);
+      return View("Edit", doggo);
+    }
 
-    // }
+    [HttpPost]
+    public IActionResult Edit(int id, Doggo doggo)
+    {
+      doggo.DoggoId = id;
+      Doggo.Put(doggo);
+      return RedirectToAction("Details", new { id = id });
+    }
 
     public IActionResult Create()
     {
@@ -44,15 +53,11 @@ namespace PupperMvc.Controllers
       return RedirectToAction("Index");
     }
 
-    // public IActionResult Delete(int id)
-    // {
 
-    // }
-
-    // [HttpPost("Delete")]
-    // public IActionResult DeleteConfirmed(int id)
-    // {
-
-    // }
+    public IActionResult Delete(int id)
+    {
+      Doggo.Delete(id);
+      return RedirectToAction("Index");
+    }
   }
 }

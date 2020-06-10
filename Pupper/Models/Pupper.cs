@@ -46,12 +46,13 @@ namespace PupperMvc.Models
 
     public static void Delete(int id)
     {
-
+      var apiCallTask = ApiHelper.Delete(id);
     }
 
     public static void Put(Doggo doggo)
     {
-
+      string jsonDoggo = JsonConvert.SerializeObject(doggo);
+      var apiCallTask = ApiHelper.Put(doggo.DoggoId, jsonDoggo);
     }
   }
 }
