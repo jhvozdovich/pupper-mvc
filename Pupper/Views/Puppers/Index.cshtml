@@ -1,0 +1,13 @@
+@using PupperMvc.Models;
+@model List<PupperMvc.Models.Doggo>;
+
+<h1>Puppers</h1>
+
+<button><a href="Puppers/Create">Add New Doggo</a></button>
+
+@foreach (Doggo doggo in Model)
+{
+  <a href="Puppers/Details/@(doggo.DoggoId)"><h3>@doggo.Name</h3></a>
+  <a href="Puppers/Edit/@(doggo.DoggoId)"><p>Edit Doggo</p></a>
+  <a href="Puppers/Delete/@(doggo.DoggoId)"><p>Delete Doggo</p></a>
+}

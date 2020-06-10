@@ -6,10 +6,10 @@ namespace PupperMvc.Controllers
 {
   public class HomeController : Controller
   {
-    HomeController()
-    {
+    // HomeController()
+    // {
 
-    }
+    // }
 
     public IActionResult Index()
     {
