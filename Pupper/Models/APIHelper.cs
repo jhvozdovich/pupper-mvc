@@ -14,6 +14,7 @@ namespace PupperMvc.Models
       return response.Content;
     }
 
+
     public static async Task Post(string newDoggo)
     {
       RestClient client = new RestClient("http://localhost:5000/api");
@@ -47,5 +48,17 @@ namespace PupperMvc.Models
       request.AddJsonBody(newDoggo);
       var response = await client.ExecuteTaskAsync(request);
     }
+
+    public static async Task<string> AttemptLogin(string username, string password)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"Users/authenticate", Method.POST);
+      request.AddHeader("Content-Type", "text/json");
+      request.AddJsonBody($"'Username': '{username}', 'Password': '{password}'");
+      var response = await client.ExecuteTaskAsync(request);
+      //response has a token in it
+      return response.Content;
+    }
   }
 }
+

@@ -1,0 +1,25 @@
+@{
+  Layout ="_Layout";
+}
+
+@using PupperMvc.ViewModels
+@model LoginViewModel
+
+@if (User.Identity.IsAuthenticated)
+{
+  <h3>You're currently logged in as @User.Identity.Name!</h3>
+}
+else
+{
+  <h2>Login</h2>
+  <hr/>
+  @using (Html.BeginForm())
+  {
+    @Html.LabelFor(m => m.UserName)
+    @Html.TextBoxFor(m => m.UserName)
+    <br>
+    @Html.LabelFor(m => m.Password)
+    @Html.PasswordFor(m => m.Password)
+    <input class="btn" type="submit" value="Login"/>
+  }
+}
